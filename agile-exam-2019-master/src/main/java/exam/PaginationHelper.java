@@ -9,50 +9,48 @@ public class PaginationHelper<I> {
 	private int itemsPerPage1;
 
     public PaginationHelper(List<I> collection, int itemsPerPage) {
-    	
     	list.addAll(collection);
-    	itemsPerPage1 = itemsPerPage;
+    	collection1 = itemsPerPage;
      }
 
     public int itemCount() {
-    	
     	itemsPerPage1 = list.size();
     	return itemsPerPage1;
     }
 
     public int pageCount() {
-    	int n,s;
-    	itemsPerPage1 = list.size();
-    	s = itemsPerPage1/collection1;
-    	if (s == 0) {
-    		n = s;
+    	int count,score;
+    	itemsPerPage1= list.size();
+    	score = itemsPerPage1/collection1;
+    	if (score == 0) {
+    		count = score;
 		}else {
-			n= s+1;
+			count = score+1;
 		}
-    	return n;
+    	return count;
     }
 
     public int pageItemCount(int pageIndex) {
-        int r,m;
+        int rest,m;
         itemsPerPage1 = list.size();
-        r = itemsPerPage1-(pageIndex)*collection1;
+        rest = itemsPerPage1-(pageIndex)*collection1;
         m = pageCount();
 		if (pageIndex >= m || pageIndex < 0) {
 			itemsPerPage1 = -1;
 		}else {
-			if (r >= collection1) {
-				itemsPerPage1= collection1;
+			if (rest >= collection1) {
+				itemsPerPage1 = collection1;
 			} else{
-				itemsPerPage1= r;
+				itemsPerPage1 = rest;
 			}
 		}
         return itemsPerPage1;
     }
 
     public int pageIndex(int itemIndex) {
-        int number,index;
-        number = list.size();
-        if (itemIndex>number || itemIndex<0) {
+        int num,index;
+        num = list.size();
+        if (itemIndex>num || itemIndex<0) {
 			index = -1;
 		}else {
 			index=itemIndex/collection1;
